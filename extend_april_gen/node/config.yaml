@@ -1,0 +1,36 @@
+TagFamily : tag16h5
+ImagePath : tag_image/
+ImageCount : 30
+GenTags : [0, 1, 2]
+GenPath : gen_tags/
+
+0 :
+  File : tag16h5_0.png
+  Size : 100
+  Canvas : [1000, 1000]
+  Extand_Dot :
+    - [400, 0, 50]
+    - [0, 400, 50]
+    - [-400, 0, 50]
+    - [0, -400, 50]
+  Pixpermm : 10
+1 :
+  File : tag16h5_1.png
+  Size : 100
+  Canvas : [600, 1000]
+  Extand_Dot :
+    - [200, 0, 20]
+    - [0, 400, 40]
+    - [-200, 0, 20]
+    - [0, -400, 40]
+  Pixpermm : 5
+2 :
+  File : tag16h5_2.png
+  Size : 100
+  Canvas : [600, 600]
+  Extand_Dot :
+    - [200, 200, 20]
+    - [-200, -200, 20]
+    - [-200, 200, 20]
+    - [200, -200, 20]
+  Pixpermm : 2
