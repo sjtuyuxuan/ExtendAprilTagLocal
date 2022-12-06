@@ -7,7 +7,28 @@ project(extend_april_local)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
+find_package(PkgConfig)
+pkg_search_module(apriltag REQUIRED apriltag)
+set(apriltag_INCLUDE_DIRS "${apriltag_INCLUDE_DIRS}/apriltag")
+link_directories(${apriltag_LIBDIR})
 find_package(catkin REQUIRED)
+find_package(catkin REQUIRED COMPONENTS
+  geometry_msgs
+  roscpp
+  rospy
+  std_msgs
+  sensor_msgs
+  cv_bridge
+  tf
+)
+find_package (
+  yaml-cpp REQUIRED
+  PATHS /usr/lib/x86_64-linux-gnu/cmake/yaml-cpp
+  NO_DEFAULT_PATH
+)
+find_package(Eigen3 REQUIRED)
+find_package(OpenCV REQUIRED)
+find_package(Ceres REQUIRED)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -114,18 +135,23 @@ catkin_package(
 include_directories(
 # include
 # ${catkin_INCLUDE_DIRS}
+${YAML_INCLUDE_DIRS}
+${CERES_INCLUDE_DIRS}
+${apriltag_INCLUDE_DIRS}
+)
+
+include_directories(
+  include/${PROJECT_NAME}
+  ${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/extend_april_local.cpp
+#   src/${PROJECT_NAME}/evio_dev.cpp
 # )
-
-## Add cmake target dependencies of the library
-## as an example, code may need to be generated before libraries
-## either from message generation or dynamic reconfigure
-# add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-
+add_executable(localization src/localization.cpp)
+add_dependencies(localization ${catkin_EXPORTED_TARGETS})
+target_link_libraries(localization ${catkin_LIBRARIES} ${OpenCV_LIBS} ${YAML_CPP_LIBRARIES} ${CERES_LIBRARIES} ${apriltag_LIBRARIES})
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
