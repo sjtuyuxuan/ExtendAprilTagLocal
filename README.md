@@ -6,7 +6,7 @@ In the project, we define the 0th Tag as the base tag for each Tag family. The o
 
 ## Frame work
 
-![ExtendAprilTag 🏖](ExtendAprilTag 🏖.png)
+<img width="1212" alt="ExtendAprilTag 🏖" src="ExtendAprilTag 🏖.png">
 
 The whole system consists of two parts: the Tag Generator module & the Localization module.
 
