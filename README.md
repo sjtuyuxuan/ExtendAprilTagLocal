@@ -6,7 +6,7 @@ In the project, we define the 0th Tag as the base tag for each Tag family. The o
 
 ## Frame work
 
-![ExtendAprilTag 🏖](file:///Users/yuxuan/git/ExtendAprilTagLocal/ExtendAprilTag 🏖.png?msec=1670511658374)
+![ExtendAprilTag 🏖](ExtendAprilTag 🏖.png)
 
 The whole system consists of two parts: the Tag Generator module & the Localization module.
 
@@ -15,7 +15,7 @@ The whole system consists of two parts: the Tag Generator module & the Localizat
 - The localization module will get information (Tag info, Camera Intrinsic parameter/Distortion coefficient, Tag pre-calibration pose) from the YAML file and do the localization task. Finally, the output should be the camera pose related to the base tag.
   
 
-![framework2png](file:///Users/yuxuan/git/ExtendAprilTagLocal/framework_2.png?msec=1670511658379)
+![framework2png](framework_2.png)
 
 ## Environment
 
@@ -61,8 +61,8 @@ Yaml Definition
 | Tag ID as key | File : The raw tag input image name<br>Size : The size of tag edge (mm)<br>Canvas : The size of canvas (mm) [W, H]<br>Extand_Dot : The position and size of extend dot (mm) [X, Y, R]<br>Pixpermm : PPI for image<br>Extrinsic : Pre-calibrate pose for tag (option) | localization &  generator |
 | ImageTopic | The input image topic | localization (Ros only) |
 | ImageSize | The input image size [W, H] | localization |
-| ImageIntrinsic | Intrinsic parameter of the camera  <br>[ f_x , 0,  c_x , 0,  f_y ,  c_y , 0, 0, 1] | localization |
-| ImageDistrotion | Distrotion parameter of the camera  <br>[ k_1 k_2 p_1 p_2 (k_3)] | localization |
+| ImageIntrinsic | Intrinsic parameter of the camera  <br>\[$f_x$, 0, $c_x$, 0, $f_y$, $c_y$, 0, 0, 1\] | localization |
+| ImageDistrotion | Distrotion parameter of the camera  <br>\[$k_1$, $k_2$, $p_1$, $p_2$, ($k_3$)\] | localization |
 | T_b_c | deprecate / | /   |
 | PosePublishTopic | The output camera pose topic | localization |
 | DebugPlot | Choose whether to plot the debug image (close to get better performance) | localization(Pi only) |
@@ -73,7 +73,7 @@ Yaml Definition
 
 ## Sample
 
-![samplegif](file:///Users/yuxuan/git/ExtendAprilTagLocal/sample.gif?msec=1670511658532)
+![samplegif](sample.gif)
 
 ## Test
 
