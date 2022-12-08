@@ -1,10 +1,21 @@
 # apriltaglocal\_deploy
 
+The goal of this project is to quickly build an accurate (calibration-free) localization system in indoor medium & large-scale scenarios.
+
+In the project, we define the 0th Tag as the base tag for each Tag family. The output pose is related to the base tag. Thus, we use the method of common view to construct a series of April tag pose associations. After that, we will use the available tag in each frame to calculate the global camera pose and finish the localization task.
+
 ## Frame work
 
-<img width="1212" alt="ExtendAprilTag 🏖" src="ExtendAprilTag 🏖.png">
+![ExtendAprilTag 🏖](file:///Users/yuxuan/git/ExtendAprilTagLocal/ExtendAprilTag 🏖.png?msec=1670511561676)
 
-![framework_2.png](framework_2.png)
+The whole system consists of two parts: the Tag Generator module & the Localization module.
+
+- The Tag Generator module will get tag information (Tag Family, Tag Size / Tag print PPI, Extend Dot size/position) from the YAML file and generate a Tag image with Extend dot.
+  
+- The localization module will get information (Tag info, Camera Intrinsic parameter/Distortion coefficient, Tag pre-calibration pose) from the YAML file and do the localization task. Finally, the output should be the camera pose related to the base tag.
+  
+
+![framework2png](file:///Users/yuxuan/git/ExtendAprilTagLocal/framework_2.png?msec=1670511561686)
 
 ## Environment
 
@@ -38,13 +49,15 @@ git clone https://github.com/sjtuyuxuan/ExtendAprilTagLocal
 cd .. && catkin_make
 ```
 
+##
+
 ## How to run
 
 `rosrun extend_april_local localization`
 
 ## Sample
 
-![sample.gif](sample.gif)
+![samplegif](file:///Users/yuxuan/git/ExtendAprilTagLocal/sample.gif?msec=1670511561848)
 
 ## Test
 
@@ -70,9 +83,9 @@ rviz
 
 ### Camera calibration
 
-You need to calibrate the camera manually. Ros `camera calibration` maybe a good choice. 
+You need to calibrate the camera manually. Ros `camera calibration` maybe a good choice.
 
-You need to get  $f_x$  $f_y$  $c_x$ $c_y$ for intrinsic and  $k_1$  $k_2$  $p_1$  $p_2$ $(k_3)$  for distortion coefficients. Tipically you should not use camera with high distortion.
+You need to get $f_x$ $f_y$ $c_x$ $c_y$ for intrinsic and $k_1$ $k_2$ $p_1$ $p_2$ $(k_3)$ for distortion coefficients. Tipically you should not use camera with high distortion.
 
 ### Output check
 
